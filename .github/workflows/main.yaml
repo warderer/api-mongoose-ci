@@ -37,3 +37,6 @@ jobs:
       - run: npm test
         env:
           MONGO_URI: mongodb://db:27017/apimongo
+          FB_PROJECT_ID: '' 
+          FB_KEYFILENAME: ''
+          FB_BUCKET_URL: ''
