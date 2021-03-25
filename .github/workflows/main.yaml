@@ -35,3 +35,5 @@ jobs:
       #npm ci lo que hace es instalar desde el package-lock.json, por lo que instala la versión exacta y es más rápido
       - run: npm ci
       - run: npm test
+        env:
+          MONGO_URI: mongodb://db:27017/apimongo
