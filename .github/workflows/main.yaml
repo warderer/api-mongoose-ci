@@ -30,7 +30,7 @@ jobs:
       - name: Test API
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '14.x'
       # Configuro el entorno que necesita node para funcionar
       #npm ci lo que hace es instalar desde el package-lock.json, por lo que instala la versión exacta y es más rápido
       - run: npm ci
