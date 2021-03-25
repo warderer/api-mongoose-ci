@@ -1,0 +1,37 @@
+name: Api Mongoose V1
+
+#On: es cuando se va a ejecutar este workflow
+#En este caso por simplicidad, cada vez que se haga un push
+on: [push]
+
+
+jobs:
+#Stages -> Los procesos (pasos) de CI que tiene que hacer este Workflow
+#Este workflow tiene que hacer 2 cosas:
+# 1) Compilar (hacer el build)
+# 2) Testear (ejecutar las pruebas)
+  build:
+    #Aqui indico al CI el Sistema Operativo en que se va a ejecutar.
+    runs-on: ubuntu-latest
+
+    #Steps: Indicamos los pasos para hacer que build funcione
+    steps:
+    #uses: Que versión de actions va a ocupar
+    - uses: actions/checkout@v2
+    #name: Nombra el paso en que estas
+    - name: Build image Docker
+    #run: ejecuta un comando especifico (en este caso de linux)
+    - run: docker build . --file Dockerfile --tag api-mongoose-v1
+
+  test:
+    - runs-on: ubuntu-latest
+
+    - uses: actions/checkout@v2
+    - name: Test API
+    # Configuro el entorno que necesita node para funcionar
+    uses: actions/setup-node@v1
+    - with:
+        node-version: '12.x'
+    #npm ci lo que hace es instalar desde el package-lock.json, por lo que instala la versión exacta y es más rápido
+    - run: npm ci
+    - run: npm test
