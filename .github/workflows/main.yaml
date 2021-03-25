@@ -25,11 +25,11 @@ jobs:
 
   test:
     - runs-on: ubuntu-latest
-
+    
     - uses: actions/checkout@v2
     - name: Test API
-    # Configuro el entorno que necesita node para funcionar
     uses: actions/setup-node@v1
+    # Configuro el entorno que necesita node para funcionar
     - with:
         node-version: '12.x'
     #npm ci lo que hace es instalar desde el package-lock.json, por lo que instala la versión exacta y es más rápido
