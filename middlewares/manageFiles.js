@@ -1,7 +1,7 @@
-const uploadImage = require('../utils/storage');
 module.exports = (req, res, next) => {
 
     if(process.env.NODE_ENV === "production") {
+        const uploadImage = require('../utils/storage');
         if(!req.file) return next(); //No hago obligatorio subir una imagen
         const url = uploadImage(req.file);
         req.body.photo = url;
