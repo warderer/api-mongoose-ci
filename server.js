@@ -9,6 +9,7 @@ const manageFiles = require('./middlewares/manageFiles');
 const app = express();
 const { MONGO_URI } = process.env; //Variable de entorno con datos de conexión
 
+
 // Defino si la imagen se guardara en carpeta local o en firebase dependiendo el entorno en que se ejecute la app
 const storage = process.env.NODE_ENV === "production"
 ? multer.memoryStorage()
@@ -62,9 +63,11 @@ app.patch('/users/:id',[mult.single('photo'), manageFiles], UserController.updat
 
 app.delete('/users/:id', UserController.remove);
 
+const port = process.env.PORT || 3000;
 if(process.env.NODE_ENV !== 'test') {
-    app.listen(3000,() => {
+    app.listen(port,() => {
         console.log('SERVER ON');
+        
     });
 }
 
