@@ -21,7 +21,7 @@ COPY . .
 #ENV PORT=$PORT
 
 # Indicamos que el entorno es el de producción
-ENV NODE_ENV=production
+ENV NODE_ENV production
 
 
 #CMD ["npm", "start"] -> NO se ejecuta con npm.
